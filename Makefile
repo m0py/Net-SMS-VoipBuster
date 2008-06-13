@@ -13,7 +13,7 @@
 #     ABSTRACT_FROM => q[lib/Net/SMS/VoipBuster.pm]
 #     AUTHOR => q[Filipe Dutra <mopy@cpan.org>]
 #     NAME => q[Net::SMS::VoipBuster]
-#     PREREQ_PM => { LWP::UserAgent=>q[0], XML::XPath::XMLParser=>q[0], XML::XPath=>q[1.13] }
+#     PREREQ_PM => { LWP::UserAgent=>q[0], XML::XPath::XMLParser=>q[0], XML::XPath=>q[1.13], Carp=>q[0] }
 #     VERSION_FROM => q[lib/Net/SMS/VoipBuster.pm]
 
 # --- MakeMaker post_initialize section:
@@ -38,7 +38,7 @@ LIBC =
 LIB_EXT = .a
 OBJ_EXT = .o
 OSNAME = linux
-OSVERS = 2.6.18-53.1.6.el5xen
+OSVERS = 2.6.18-53.1.14.el5xen
 RANLIB = :
 SITELIBEXP = /usr/lib/perl5/site_perl/5.8.8
 SITEARCHEXP = /usr/lib64/perl5/site_perl/5.8.8/x86_64-linux-thread-multi
@@ -53,11 +53,11 @@ DIRFILESEP = /
 DFSEP = $(DIRFILESEP)
 NAME = Net::SMS::VoipBuster
 NAME_SYM = Net_SMS_VoipBuster
-VERSION = 0.02
+VERSION = 0.03
 VERSION_MACRO = VERSION
-VERSION_SYM = 0_02
+VERSION_SYM = 0_03
 DEFINE_VERSION = -D$(VERSION_MACRO)=\"$(VERSION)\"
-XS_VERSION = 0.02
+XS_VERSION = 0.03
 XS_VERSION_MACRO = XS_VERSION
 XS_DEFINE_VERSION = -D$(XS_VERSION_MACRO)=\"$(XS_VERSION)\"
 INST_ARCHLIB = blib/arch
@@ -248,7 +248,7 @@ RCS_LABEL = rcs -Nv$(VERSION_SYM): -q
 DIST_CP = best
 DIST_DEFAULT = tardist
 DISTNAME = Net-SMS-VoipBuster
-DISTVNAME = Net-SMS-VoipBuster-0.02
+DISTVNAME = Net-SMS-VoipBuster-0.03
 
 
 # --- MakeMaker macro section:
@@ -469,7 +469,7 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) Generating META.yml
 	$(NOECHO) $(ECHO) '--- #YAML:1.0' > META_new.yml
 	$(NOECHO) $(ECHO) 'name:                Net-SMS-VoipBuster' >> META_new.yml
-	$(NOECHO) $(ECHO) 'version:             0.02' >> META_new.yml
+	$(NOECHO) $(ECHO) 'version:             0.03' >> META_new.yml
 	$(NOECHO) $(ECHO) 'abstract:            Send SMS from VoipBuster' >> META_new.yml
 	$(NOECHO) $(ECHO) 'license:             ~' >> META_new.yml
 	$(NOECHO) $(ECHO) 'author:              ' >> META_new.yml
@@ -477,6 +477,7 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) 'generated_by:        ExtUtils::MakeMaker version 6.44' >> META_new.yml
 	$(NOECHO) $(ECHO) 'distribution_type:   module' >> META_new.yml
 	$(NOECHO) $(ECHO) 'requires:     ' >> META_new.yml
+	$(NOECHO) $(ECHO) '    Carp:                          0' >> META_new.yml
 	$(NOECHO) $(ECHO) '    LWP::UserAgent:                0' >> META_new.yml
 	$(NOECHO) $(ECHO) '    XML::XPath:                    1.13' >> META_new.yml
 	$(NOECHO) $(ECHO) '    XML::XPath::XMLParser:         0' >> META_new.yml
@@ -773,11 +774,12 @@ testdb_static :: testdb_dynamic
 # --- MakeMaker ppd section:
 # Creates a PPD (Perl Package Description) for a binary distribution.
 ppd :
-	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="0,02,0,0">' > $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="0,03,0,0">' > $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <TITLE>$(DISTNAME)</TITLE>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <ABSTRACT>Send SMS from VoipBuster</ABSTRACT>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <AUTHOR>Filipe Dutra &lt;mopy@cpan.org&gt;</AUTHOR>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <IMPLEMENTATION>' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <DEPENDENCY NAME="Carp" VERSION="0,0,0,0" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <DEPENDENCY NAME="LWP-UserAgent" VERSION="0,0,0,0" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <DEPENDENCY NAME="XML-XPath" VERSION="1,13,0,0" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <DEPENDENCY NAME="XML-XPath-XMLParser" VERSION="0,0,0,0" />' >> $(DISTNAME).ppd
