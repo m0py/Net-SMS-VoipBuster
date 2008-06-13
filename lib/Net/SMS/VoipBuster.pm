@@ -5,6 +5,7 @@ use warnings;
 use LWP::UserAgent;
 use XML::XPath;
 use XML::XPath::XMLParser;
+use Carp;
 
 our $VERSION = '0.03';
 
@@ -12,6 +13,10 @@ sub new {
     my $class    = shift;
     my $user     = shift;
     my $password = shift;
+    
+    croak("Please insert an user.") unless ($user);
+    croak("Please inser na password.") unless ($password);
+
     my $self     = bless { 'user' => $user, 'pass' => $password }, $class;
 
     return $self;
@@ -21,6 +26,9 @@ sub send {
     my $self = shift;
     my $msg  = shift;
     my $to   = shift;
+
+    croak("Please insert an message.") unless ($msg);
+    croak("Please insert number to destination") unless($to);
 
     my $ua = LWP::UserAgent->new;
     #$ua->timeout(10);
@@ -68,7 +76,7 @@ Net::SMS::VoipBuster - Send SMS from VoipBuster
 
 =head1 VERSION
 
-Version 0.01
+Version 0.03
 
 =head1 SYNOPSIS
 
