@@ -1,0 +1,5 @@
+0.01  Thu Apr 10 16:47:36 2008
+	- original version;
+		-Net::SMS::VoipBuster
+0.02
+    - Some change in tests.
