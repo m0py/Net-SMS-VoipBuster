@@ -3,3 +3,6 @@
 		-Net::SMS::VoipBuster
 0.02
     - Some change in tests.
+
+0.03
+    - Validate parms
