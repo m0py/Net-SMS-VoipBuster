@@ -14,8 +14,8 @@ sub new {
     my $user     = shift;
     my $password = shift;
     
-    croak("Please insert an user.") unless ($user);
-    croak("Please inser na password.") unless ($password);
+    croak("Please insert an user.")     unless ($user);
+    croak("Please insert na password.") unless ($password);
 
     my $self     = bless { 'user' => $user, 'pass' => $password }, $class;
 
@@ -27,7 +27,7 @@ sub send {
     my $msg  = shift;
     my $to   = shift;
 
-    croak("Please insert an message.") unless ($msg);
+    croak("Please insert an message.")           unless ($msg);
     croak("Please insert number to destination") unless($to);
 
     my $ua = LWP::UserAgent->new;
