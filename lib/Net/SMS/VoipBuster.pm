@@ -15,9 +15,11 @@ sub new {
     my $password = shift;
     
     croak("Please insert an user.")     unless ($user);
-    croak("Please insert na password.") unless ($password);
+    croak("Please insert an password.") unless ($password);
 
-    my $self     = bless { 'user' => $user, 'pass' => $password }, $class;
+    my $self     = bless {
+        'user' => $user, 'pass' => $password 
+    }, $class;
 
     return $self;
 }
@@ -34,7 +36,7 @@ sub send {
     #$ua->timeout(10);
     #$ua->env_proxy;
 
-    my $send_url = $ua->get("https://myaccount.voipbuster.com/clx/sendsms.php?username=$self->{'user'}&password=$self->{'pass'}&from=$self->{'user'}&to=$to&text=$msg");
+    my $send_url = $ua->get("https://www.voipbuster.com/myaccount/sendsms.php?username=$self->{'user'}&password=$self->{'pass'}&from=$self->{'user'}&to=$to&text=$msg");
     
     my $result = $send_url->content;
 
