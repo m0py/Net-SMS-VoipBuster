@@ -7,7 +7,7 @@ use XML::XPath;
 use XML::XPath::XMLParser;
 use Carp;
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 sub new {
     my $class    = shift;
@@ -18,7 +18,8 @@ sub new {
     croak("Please insert an password.") unless ($password);
 
     my $self     = bless {
-        'user' => $user, 'pass' => $password 
+        'user' => $user, 
+        'pass' => $password 
     }, $class;
 
     return $self;
